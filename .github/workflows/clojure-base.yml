@@ -28,7 +28,7 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-npm-
     - name: Install karma
-      run: npm install karma-cli
+      run: sudo npm install -g karma-cli
     - name: Install dependencies
       run: lein deps
     - name: Run tests
