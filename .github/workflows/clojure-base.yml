@@ -92,6 +92,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
+          ref: production
           persist-credentials: false
       - uses: peaceiris/actions-gh-pages@v3
         with:
