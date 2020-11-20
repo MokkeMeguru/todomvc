@@ -145,10 +145,10 @@
       :-webkit-appearance "none"
       :appearance "none"}]
     [:.toggle
-     {:background-image "url(\"/svg/toggle.svg\")"}
+     {:background-image "url(\"../svg/toggle.svg\")"}
 
      [:&:checked
-      {:background-image "url(\"/svg/toggle-checked.svg\")"}]]
+      {:background-image "url(\"../svg/toggle-checked.svg\")"}]]
     [:label
      {:white-space "pre-line"
       :word-break "break-all"
