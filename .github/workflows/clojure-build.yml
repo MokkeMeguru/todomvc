@@ -3,7 +3,7 @@ name: Release Production
 on:
   push:
     branches:
-      - main
+      [ main ]
 
 jobs:
   build-deploy:
@@ -57,6 +57,6 @@ jobs:
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.PAT_GITHUB_TOKEN }}
           force: true
           branch: production
