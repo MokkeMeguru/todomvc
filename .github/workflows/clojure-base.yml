@@ -8,9 +8,7 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: Maven cache
@@ -31,5 +29,6 @@ jobs:
       run: sudo npm install -g karma-cli
     - name: Install dependencies
       run: lein deps
+  ci:
     - name: Run tests
       run: lein ci
