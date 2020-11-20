@@ -2,13 +2,39 @@ name: Clojure CI
 
 on:
   push:
-    branches:
-      - master
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-  build-deploy:
+  ci:
     runs-on: ubuntu-latest
-
+    steps:
+    - uses: actions/checkout@v2
+    - name: Maven cache
+      uses: actions/cache@v1
+      with:
+        path: /root/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('project.clj') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
+    - name: npm cache
+      uses: actions/cache@v1
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-npm-${{ hashFiles('project.clj') }}-${{ hashFiles('**/deps.cljs') }}
+        restore-keys: |
+          ${{ runner.os }}-npm-
+    - name: Install karma
+      run: sudo npm install -g karma-cli
+    - name: Install dependencies
+      run: lein deps
+    - name: Run tests
+      run: lein ci
+  production-build:
+    needs:
+      - ci
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
@@ -22,7 +48,6 @@ jobs:
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/project.clj') }}
           restore-keys: |
             ${{ runner.os }}-node-
-
       - uses: actions/setup-node@v1
         with:
           node-version: "10.x"
@@ -38,7 +63,6 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
-
       - name: Install dependencies
         run: lein deps
 
@@ -52,11 +76,24 @@ jobs:
         run: |
           git config --local user.email "meguru.mokke@gmail.com"
           git config --local user.name "MokkeMeguru"
-          date > sacrifice.txt
-          git commit -m "push from main" -a
+          git add .
+          git commit -m "push from main" --allow-empty
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.PAT_TO_GITHUB_ACTION }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           force: true
-          branch: production
+          branch: production 
+  deploy:
+    needs: 
+      - production-build
+      - ci
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./resources/public
