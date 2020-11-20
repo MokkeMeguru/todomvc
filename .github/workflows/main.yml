@@ -1,0 +1,20 @@
+name: Push to Github Pages
+
+on:
+  push:
+    branches:
+      [ production ]
+
+jobs:
+  deploy-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./resources/public
