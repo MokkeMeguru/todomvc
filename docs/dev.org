@@ -1,0 +1,3 @@
+#+TITLE:memo
+* memo
+- 多分一回 lein watch をかけないと、cider-jack-in-cljsはうごかない
