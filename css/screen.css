@@ -170,11 +170,11 @@ label[for="toggle-all"] {
 }
 
 #todo-list li .toggle {
-  background-image: url("/svg/toggle.svg");
+  background-image: url("../svg/toggle.svg");
 }
 
 #todo-list li .toggle:checked {
-  background-image: url("/svg/toggle-checked.svg");
+  background-image: url("../svg/toggle-checked.svg");
 }
 
 #todo-list li label {
