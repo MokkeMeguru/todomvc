@@ -1,9 +1,12 @@
 name: Push to Github Pages
 
 on:
+  workflow_dispatch:
+    branches:
+      [ production ]
   push:
     branches:
-      - production
+      [ production ]
 
 jobs:
   deploy-release:
