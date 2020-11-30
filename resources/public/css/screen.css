@@ -1,5 +1,4 @@
-html,
-body {
+html, body {
   margin: 0;
   padding: 0;
 }
@@ -34,8 +33,7 @@ body {
   color: #4d4d4d;
 }
 
-button,
-input[type="checkbox"] {
+button, input[type="checkbox"] {
   outline: none;
 }
 
@@ -47,12 +45,10 @@ input[type="checkbox"] {
   background: #fff;
   margin: 130px 0 40px 0;
   position: relative;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2),0 25px 50px 0 rgba(0, 0, 0, 0.1);
 }
 
-#todoapp input::-input-placeholder,
-#todoapp input::-input-placeholder,
-#todoapp input::-moz-input-placeholder {
+#todoapp input::-input-placeholder, #todoapp input::-input-placeholder, #todoapp input::-moz-input-placeholder {
   font-style: italic;
   font-weight: 300;
   color: #e6e6e6;
@@ -71,8 +67,7 @@ input[type="checkbox"] {
   color: rgba(175, 47, 47, 0.15);
 }
 
-#new-todo,
-.edit {
+#new-todo, .edit {
   line-height: 1.4em;
   width: 100%;
   font-family: inherit;
@@ -252,9 +247,7 @@ label[for="toggle-all"] {
   left: 0;
   height: 50px;
   overflow: hidden;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 8px 0 -3px #f6f6f6,
-    0 9px 1px -3px rgba(0, 0, 0, 0.2), 0 16px 0 -6px #f6f6f6,
-    0 17px 2px -6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2),0 8px 0 -3px #f6f6f6,0 9px 1px -3px rgba(0, 0, 0, 0.2),0 16px 0 -6px #f6f6f6,0 17px 2px -6px rgba(0, 0, 0, 0.2);
 }
 
 #todo-count {
@@ -288,8 +281,7 @@ label[for="toggle-all"] {
   border-radius: 3px;
 }
 
-#filters li a.selected,
-#filters li a:hover {
+#filters li a.selected, #filters li a:hover {
   border-color: rgba(175, 47, 47, 0.1);
 }
 
@@ -297,8 +289,7 @@ label[for="toggle-all"] {
   border-color: rgba(175, 47, 47, 0.2);
 }
 
-#clear-completed,
-#clear-completed:active {
+#clear-completed, #clear-completed:active {
   float: right;
   position: relative;
   line-height: 20px;
@@ -333,28 +324,36 @@ label[for="toggle-all"] {
 }
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
+
   #toggle-all {
     background: none;
   }
-
+  
+  
+  
+  
+  
   #todo-list li .toggle {
     height: 40px;
   }
-
+  
   #toggle-all {
     -webkit-transform: rotate(90deg);
     transform: rotate(90deg);
     -webkit-appearance: none;
     appearance: none;
   }
+
 }
 
 @media (max-width: 430px) {
+
   #footer {
     height: 50px;
   }
-
+  
   #filters {
     bottom: 10px;
   }
+
 }
