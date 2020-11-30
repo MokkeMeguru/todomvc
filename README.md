@@ -2,6 +2,8 @@
 
 re-frame sample app with reitit routing
 
+ref: https://github.com/day8/re-frame/tree/master/examples/todomvc
+
 # usage
 
 ```sh
